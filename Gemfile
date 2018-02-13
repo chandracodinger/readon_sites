@@ -23,7 +23,7 @@ gem 'bcrypt', git: 'https://github.com/codahale/bcrypt-ruby.git', require: 'bcry
 gem 'sorcery'
 
 group :development do
-	gem 'sqlite3'
+	gem 'pg'
 end
 
 group :production do
