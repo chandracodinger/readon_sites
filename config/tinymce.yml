@@ -1,0 +1,23 @@
+toolbar:
+  - styleselect | bold italic | undo redo | fontselect | fontsizeselect |image | link
+plugins:
+  - image
+  - link
+  - table
+  - advlist 
+  - autolink 
+  - lists 
+  - charmap 
+  - print 
+  - preview 
+  - anchor
+  - searchreplace
+  - visualblocks 
+  - code 
+  - fullscreen
+  - insertdatetime 
+  - media 
+  - contextmenu 
+  - paste 
+  - emoticons
+  - textcolor

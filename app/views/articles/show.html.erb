@@ -1,0 +1,50 @@
+<%= render "layouts/navbar" %>
+    <%= render "layouts/d-flex" %>
+        <%= render "layouts/sidebar" %>
+            <%= render "layouts/content" %>
+                <%= render "layouts/breadcrumb" %>
+                    <div class="container">
+                        <h2 class="text-center"><strong><%= @article.title %></strong></h2>
+                        <div class="col-sm-8 offset-sm-2">
+                            <%= image_tag @article.image.url(:large),:class=>'text-center w-100' %>
+                        </div>
+                        <div class="mt-4">
+                            <h6><div class="badge badge-primary"><%= time_ago_in_words(@article.created_at) %></div></h6>
+                            <%= @article.body.html_safe %>
+                            <p> 
+                                Tags: <%= raw @article.tag_list.map{|t| link_to t, tag_path(t)}.join(', ')%>
+                            </p>
+                        </div>
+                        <div class="col-sm-12 pb-3">
+                            <%= link_to like_article_path(@article),:class=>"btn btn-success btn-lg",method: :put do%>
+                                <i class="fa fa-thumbs-up"></i>
+                                Like
+                                <span class="badge badge-light"><%= @article.get_upvotes.size%></span>
+                            <% end %>
+                            <%= link_to unlike_article_path(@article),:class=>"btn btn-danger btn-lg",method: :put do%>
+                                <i class="fa fa-thumbs-down"></i>
+                                Dislike
+                                <span class="badge badge-light"><%= @article.get_downvotes.size%></span>                              
+                            <% end %>
+                        </div>
+                    </div>
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <h3><%= @article.comments.count %> Comments</h3>
+                                <%= render @article.comments%>
+                            </div>
+                            <div class="col-sm-6">
+                                <h3>Add a comments :</h3>
+                                <div class="card mb-2">
+                                    <div class="card-body">
+                                        <%= render 'comments/form'%>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            <%= render "layouts/endif" %>
+            <%= render "layouts/right-sidebar" %>
+    <%= render "layouts/endif" %>
+<%= render "layouts/footer"%>

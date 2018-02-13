@@ -1,0 +1,11 @@
+<div class="card mb-2">
+    <div class="card-body">
+        <b class="card-title">Name : <%= comment.name %></b>
+        <p class="card-text">
+            <%= comment.body %>
+        </p>
+    </div>
+    <div class="card-footer">
+        <%= time_ago_in_words(comment.created_at) %>
+    </div>
+</div>

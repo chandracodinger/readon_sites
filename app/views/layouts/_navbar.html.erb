@@ -1,0 +1,46 @@
+<nav class="navbar navbar-expand-sm navbar-light bg-light fixed-top justify-content-between shadow">
+    <div class="col-sm-4">
+        <a class="sidebar-toggle btn "><i class="fa fa-bars"></i></a>
+        <%= link_to root_path, :class=>"navbar-brand" do  %>
+            <%= image_tag "logotext.svg", :height => "30px" %>
+        <% end %>    
+        </a>
+    </div>
+    <%= search_form_for @q, url: search_articles_path, html: { method: :post },:class=>"form-inline col-sm-4" do |f| %>
+    <div class="input-group col-sm-12">
+        <%= f.search_field :title_or_body_cont,:placeholder=>"Search here !",:class=>"form-control" %>
+        <div class="input-group-append">
+            <%= f.button(:class=>"btn btn-outline-secondary") do %>
+                <i class="fa fa-search"></i>
+            <% end %>
+        </div>
+    </div>
+    <% end %>
+    <ul class=" nav justify-content-end col-sm-4">
+            <li class="nav-item  dropdown">
+            <% if readonuser_signed_in? %>
+                <a class=" dropdown-toggle nav-link text-dark" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown">
+                    <i class="fas fa-md fa-user"></i><%= current_readonuser.username %>
+                </a>
+                
+                <div class="dropdown-menu dropdown-menu-right pt-0" aria-labelledby="navbarDropdownMenuLink">
+                    <% if (current_readonuser.avatar_file_name != nil) then %>
+                    <a class="dropdown-item bg-info"><%= image_tag current_readonuser.avatar.url(:thumb),:class=>'rounded-circle',:width=>'100%' %></a>
+                    <% else %>
+                        <%= link_to edit_readonuser_registration_url,:class=>"dropdown-item bg-info text-center" do %>
+                            <i class="fas fa-user fa-3x"></i><br>Add Avatar
+                        <% end %>
+                    <% end %>
+                    <a class="dropdown-item" href="/dashboard">My Dashboard</a>
+                    <%= link_to('Edit',edit_readonuser_registration_url,:class=>'dropdown-item' ) %>
+                    <%= link_to('Logout', destroy_readonuser_session_path, method: :delete,:class=>'dropdown-item' ) %>
+                </div>
+                <% else %>
+                <%= link_to(raw('<i class="fas fa-md fa-user-plus" ></i> Sign up'),new_readonuser_registration_url,:class=>'dropdown-item' ) %>
+             </li>
+             <li>   
+                <%= link_to(raw('<i class="fas fa-md fa-sign-in-alt" ></i> Log in'),new_readonuser_session_url,:class=>'dropdown-item' ) %>
+            </li>
+            <% end %>
+    </ul>
+</nav>

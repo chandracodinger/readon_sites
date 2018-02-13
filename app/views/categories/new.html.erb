@@ -1,0 +1,21 @@
+<%= render "layouts/navbar" %>
+    <%= render "layouts/d-flex" %>
+        <%= render "layouts/sidebar-dashboard" %>
+            <%= render "layouts/content" %>
+                <%= render "layouts/breadcrumb" %>
+
+
+					<div class="container-fluid mb-5">
+						<h1>New Category</h1>
+
+					<%= render 'form', category: @category %>
+
+					<%= link_to 'Back', categories_path %>
+
+					</div>
+
+
+                        <%= render "layouts/endif" %>
+                            <%= render "layouts/endif" %>
+                                <%= render "layouts/footer"%>
+

@@ -1,0 +1,65 @@
+<% @articles.each do |article| %>
+    <div class="container-fluid mb-3">
+        <div class="row">
+            <div class="col-sm-4">
+                <div class="card shadow">
+                    <%= image_tag article.image.url, :class=>'img-fluid' %>
+                        <div class="card-body">
+                            <h5 class="card-title"><%= article.title %></h5>
+                            <p class="card-text">
+                                <%= truncate_html( article.body,length: 200,omission: '...') %>
+                            </p>
+                            <%= link_to 'Read more', article,:class => 'btn btn-outline-primary' %>
+                        </div>
+                        <div class="card-footer">
+                            <small class="text-muted">
+                        <i class="fas fa-pencil-alt"></i> <%= article.readonuser.username%> |
+                        <i class="fas fa-thumbs-up"></i> <%= article.get_upvotes.size%> |
+                        <i class="fas fa-thumbs-down"></i> <%= article.get_downvotes.size%>
+                    </small>
+                        </div>
+                </div>
+            </div>
+            <div class="col-sm-8">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <h3>Add a comments :</h3>
+                        <div class="card mb-2">
+                            <div class="card-body">
+                                <%= form_for([article,article.comments.build]) do |f| %>
+                                    <%= f.label :name,"Your name" %>
+                                        <br>
+                                        <%= f.text_field :name,:class=>"form-control col-sm-8"%>
+                                            <br>
+                                            <%= f.label :body %>
+                                                <br>
+                                                <%= f.text_area :body ,:class=>"form-control",:rows=>"5" %>
+                                                    <br>
+                                                    <%= f.submit :class=>"btn btn-success" %>
+                                                        </p>
+                                                        <% end %>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-12">
+                        <h3><%= article.comments.count %> Comments</h3>
+                        <% Comment.where(article_id: article.id).each do |comment| %>
+                            <div class="card mb-2">
+                                <div class="card-body">
+                                    <b class="card-title">Name : <%= comment.name %></b>
+                                    <p class="card-text">
+                                        <%= comment.body %>
+                                    </p>
+                                </div>
+                                <div class="card-footer">
+                                    <%= time_ago_in_words(comment.created_at) %>
+                                    <%= link_to 'delete',[comment.article,comment],method: :delete,data: {confirm: 'Are you sure'}%>
+                                </div>
+                            </div>
+                            <% end %>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <% end %>

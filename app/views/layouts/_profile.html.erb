@@ -1,0 +1,27 @@
+<div class="col-md-10 col-md-offset-1 offset-md-1  profile-wrapper col-sm-12 col-xs-12 shadow">
+    <div class="row">
+        <div class="col-md-12 profile-back-img col-sm-12 col-xs-12">
+            <%= image_tag "a.jpg"%>
+        </div>
+        <div class="col-md-12 profile-name-area col-sm-12 col-xs-12">
+            <div class="row">
+                <div class="col-md-3 text-center user-pic col-sm-2 col-xs-12">
+                    <%= image_tag current_readonuser.avatar.url%>
+                </div>
+                <div class="col-md-4 user-name col-sm-5 col-xs-12">
+                    <h2><strong><%= current_readonuser.username%></strong></h2>
+                </div>
+                <div class="col-md-6 profile-btn-area col-sm-5 col-xs-12">
+                    <div class="pull-right text-dark">
+                        <%= link_to edit_readonuser_registration_url, :class=>"btn btn-lg btn-light" do %>
+                            <strong>EDIT PROFILE</strong>
+                        <% end %>
+                        <%= link_to new_article_url, :class=>"btn btn-lg btn-light" do %>
+                            <strong>ADD ARTICLE</strong>
+                        <% end %>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

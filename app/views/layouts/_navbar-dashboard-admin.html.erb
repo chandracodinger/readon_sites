@@ -1,0 +1,27 @@
+<nav class="navbar navbar-expand-sm navbar-light bg-light fixed-top justify-content-between shadow">
+    <div class="col-sm-4">
+        <a class="sidebar-toggle btn "><i class="fa fa-bars"></i></a>
+        <%= link_to root_path, :class=>"navbar-brand" do  %>
+            <%= image_tag "logotext.svg", :height => "30px" %>
+        <% end %>  
+    </div>
+    <ul class=" nav justify-content-end col-sm-4">
+            <li class="nav-item  dropdown">
+            <% if admin_signed_in? %>
+                <a class=" dropdown-toggle nav-link text-dark" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown">
+                    <i class="fas fa-md fa-user"></i><%= current_admin["email"] %>
+                </a>
+                
+                <div class="dropdown-menu dropdown-menu-right pt-0" aria-labelledby="navbarDropdownMenuLink">
+                    <%= link_to('Edit',edit_admin_registration_url,:class=>'dropdown-item' ) %>
+                    <%= link_to('Logout', destroy_admin_session_path, method: :delete,:class=>'dropdown-item' ) %>
+                </div>
+                <% else %>
+                <%= link_to(raw('<i class="fas fa-md fa-user-plus" ></i> Sign up'),new_admin_registration_url,:class=>'dropdown-item' ) %>
+             </li>
+             <li>   
+                <%= link_to(raw('<i class="fas fa-md fa-sign-in-alt" ></i> Log in'),new_admin_session_url,:class=>'dropdown-item' ) %>
+            </li>
+            <% end %>
+    </ul>
+</nav>

@@ -1,0 +1,23 @@
+    <div class="sidebar shadow col-sm-2  bg-info stiky-top mt-5 pt-5 pl-0 pr-0 col-8 ">
+        <ul class="list-unstyled sps col-sm-2 p-0 col-8">
+            <li><h4>&nbsp;&nbsp;<i class="fas fa-server"></i> Categories<hr></h4></li>
+            <li>
+                <%= link_to articles_path do%>
+                    <i class="fas fa-chevron-right"></i> All Article
+                <% end %>
+            </li>
+            <% @categories.each do |category| %>
+            <li>
+                <%= link_to category_article_url(category.name) do %>
+                  <i class="fas fa-chevron-right"></i> <%= category.name %> 
+                <% end %>
+            </li>
+            <% end %>
+            <li><h4>&nbsp;&nbsp;<i class="fa fa-fw fa-link"></i> Tags<hr></h4></li>
+            <div class="container">    
+                <% tag_cloud(@tags, %w(css1 css2 css3 css4)) do |tag, css_class| %>
+                 <span class="badge badge-light text-light"><%= link_to tag.name, tag_path(tag.name), :class => css_class %></span>
+                <% end %>
+            </div>    
+        </ul>
+    </div>

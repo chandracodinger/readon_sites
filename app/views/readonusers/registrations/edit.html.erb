@@ -1,0 +1,20 @@
+<%= render "layouts/navbar-dashboard" %>
+<div class="d-flex align-items-stretch ">
+    <%= render "layouts/sidebar-dashboard" %>
+    <div class="content mt-5 pt-4">
+        <div class="container-fluid mb-3">
+            <div class="row">
+                <p class="notice"><%= notice %></p>
+                <p class="alert"><%= alert %></p>
+                <div class="col-sm-12">
+                    <h2>Edit <%= resource_name.to_s.humanize %></h2>
+                </div>
+                <div class="col-sm-12">
+                <%= render 'edit' %>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<%= render "layouts/footer"%>
+                

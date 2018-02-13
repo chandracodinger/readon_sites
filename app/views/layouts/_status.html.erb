@@ -1,0 +1,54 @@
+<div class="container-fluid pb-5 pt-4">
+    <div class="card-deck">
+        <div class="card cyan shadow">
+            <div class="card-body text-light">
+                <div class="row">
+                    <div class="col-sm-4">
+                        <i class="fas fa-list-ul fa-3x"></i>
+                    </div>
+                    <div class="col-sm-8">
+                        <h5 class="card-title"><%= @articles.count %> Articles</h5>
+                        <%= link_to "Read more", dashboard_path,:class=>"text-light"%>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card orange shadow">
+            <div class="card-body text-light">
+                <div class="row">
+                    <div class="col-sm-4">
+                        <i class="far fa-comments fa-3x"></i>
+                    </div>
+                    <div class="col-sm-8">
+                        <h5 class="card-title"><%= @comments.count %> Comments</h5>
+                        <%= link_to "Read more", dashboard_comments_path,:class=>"text-light"%>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card bg-danger shadow">
+            <div class="card-body text-light">
+                <div class="row">
+                    <div class="col-sm-4">
+                        <i class="fas fa-thumbs-up fa-3x"></i>
+                    </div>
+                    <div class="col-sm-8">
+                        <h5 class="card-title"><%= Article.where(readonuser_id: current_readonuser.id).joins(:readonuser).sum(:cached_votes_up)%> Likes</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card lightgreen shadow">
+            <div class="card-body text-light">
+                <div class="row">
+                    <div class="col-sm-4">
+                        <i class="fas fa-star fa-3x"></i>
+                    </div>
+                    <div class="col-sm-8">
+                        <h5 class="card-title">Rating <%=Article.where(readonuser_id: current_readonuser.id).joins(:readonuser).sum(:cached_weighted_average) %> </h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

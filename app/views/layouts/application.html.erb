@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="icon" href='<%= image_url("logo.svg")%>' type="image/gif" sizes="16x16">
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <title>Readon</title>
+    <%= csrf_meta_tags %>
+
+    <%= tinymce_assets %>
+  </head>
+
+  <body>
+    <%= yield %>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+  </body>
+</html>

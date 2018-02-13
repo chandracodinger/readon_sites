@@ -1,0 +1,11 @@
+    <div class="col-sm-2 pt-5 mt-4 pl-0 pr-1 d-none d-sm-block">
+        <h4><i class="far fa-newspaper"></i> Next</h4>
+        <hr>
+        <% @right_sidebar.each do |r| %>
+        <h5><%= truncate_html r.title,:length=>60 %></h5>
+            <%= image_tag r.image.url(:medium),:class=>'img-fluid col-sm-12 pl-0 pr-0'%>
+            <%= truncate_html r.body,:length =>80%>
+            <%= link_to "Read more",article_path(r),:class=>"btn btn-success"%>
+            <hr>
+        <%end%>    
+    </div>

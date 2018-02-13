@@ -1,0 +1,16 @@
+<%= render "layouts/navbar" %>
+    <%= render "layouts/d-flex" %>
+        <%= render "layouts/sidebar-dashboard" %>
+            <%= render "layouts/content" %>
+                <%= render "layouts/breadcrumb" %>
+                    <table class="table-striped">
+                        <tr>
+                            <th class="thead-dark">Name</th>
+                        </tr>
+                        <tr>
+                            <th><%= @category.name %></th>
+                        </tr>
+                    </table>
+                    <%= render "layouts/endif" %>
+                        <%= render "layouts/endif" %>
+                            <%= render "layouts/footer"%>

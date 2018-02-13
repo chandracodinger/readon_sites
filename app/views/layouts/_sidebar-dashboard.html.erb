@@ -1,0 +1,24 @@
+    <div class="sidebar shadow col-sm-2  bg-secondary stiky-top mt-5 pt-5 pl-0 pr-0 col-8 ">
+        <ul class="list-unstyled sps col-sm-2 p-0 col-8">
+            <li><h4>&nbsp;&nbsp;&nbsp;&nbsp;    <i class="far fa-user-circle"></i> Dashboard<hr></h4></li>
+        	<li><h4>&nbsp;&nbsp;<i class="fas fa-server"></i> Menu<hr></h4></li>
+            <li>
+                <%= link_to(dashboard_url) do %>
+                    <i class="fas fa-chevron-right"></i> My Dashboard
+                <% end %>
+            </li>
+            <li>
+                <%= link_to(edit_readonuser_registration_url) do %>
+                    <i class="fas fa-chevron-right"></i> Edit My Profile
+                <% end %>
+            </li>
+            <li>
+                <%= link_to categories_url do %>
+                    <i class="fas fa-chevron-right"></i> Categories
+                <% end %>
+            </li>
+            <li>
+                
+            </li>
+        </ul>
+    </div>
