@@ -21,15 +21,7 @@ gem 'jquery-rails'
 gem 'font-awesome-sass', '~> 4.7.0'
 gem 'bcrypt', git: 'https://github.com/codahale/bcrypt-ruby.git', require: 'bcrypt'
 gem 'sorcery'
-
-group :development do
-	gem 'pg'
-end
-
-group :production do
-	gem 'pg'
-	gem 'rails_12factor'
-end
+gem 'pg'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.4'
 # Use sqlite3 as the database for Active Record
